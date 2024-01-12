@@ -363,6 +363,17 @@
     <!-- <script src="script.js"></script> -->
     <script>
       $(document).ready(function () {
+        // Activer FastClick pour améliorer la réactivité sur les appareils mobiles
+        if ("addEventListener" in document) {
+          document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+              FastClick.attach(document.body);
+            },
+            false
+          );
+        }
+
         function simulateLoading() {
           var progressBar = $("#progress-bar");
           var loadingCount = 0;
