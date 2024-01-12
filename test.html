@@ -358,6 +358,8 @@
     </section>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
     <!-- <script src="script.js"></script> -->
     <script>
       $(document).ready(function () {
@@ -379,6 +381,10 @@
         }
 
         simulateLoading();
+
+        function getDistance(x1, y1, x2, y2) {
+          return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        }
 
         if ($(window).width() >= 770) {
           $(".button").css({ bottom: 20, right: 20 }); // Position initiale
@@ -433,8 +439,10 @@
           $(".button").mouseleave(function () {
             $(".button").css({ transform: "scale(1)" });
           });
+        } else {
+          // Activer le déplacement tactile pour les écrans de moins de 770px
+          $(".button").draggable();
         }
-
         function getDistance(x1, y1, x2, y2) {
           return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
         }
