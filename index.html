@@ -1,12 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
+    <!-- Métadonnées -->
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Portfolio en construction</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Liens vers les bibliothèques Bootstrap et Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Liens vers les polices -->
+    <!-- Font LinkedIn -->
+    <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" />
+    <!-- Font Instagram -->
+    <link
+      href="https://db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=Billabong+W00+Regular"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Portfolio en construction modifier</h1>
-    <p>bonjour modifier</p>
+    <!-- Contenu principal -->
+    <div id="hero-banner">
+      <h1>Portfolio en construction</h1>
+
+      <!-- Barre de progression -->
+      <div id="loading-bar">
+        <div id="progress-bar"></div>
+      </div>
+
+      <!-- Bouton de contact -->
+      <button id="contact-button" class="btn btn-primary">Contactez-moi</button>
+
+      <!-- Icônes de réseaux sociaux -->
+      <div id="social-icons">
+        <ul class="wrapper">
+          <!-- LinkedIn -->
+          <li class="icon linkedin">
+            <span class="tooltip" style="font-family: 'Myriad Pro', sans-serif"
+              >LinkedIn</span
+            >
+            <span><i class="bi bi-linkedin"></i></span>
+          </li>
+
+          <!-- Twitter-X -->
+          <li class="icon twitter-x">
+            <span class="tooltip"><i class="bi bi-twitter-x"></i></span>
+            <span><i class="bi bi-twitter-x"></i></span>
+          </li>
+
+          <!-- Instagram -->
+          <li class="icon instagram">
+            <span class="tooltip" style="font-family: 'Billabong W00 Regular'">
+              Instagram
+            </span>
+            <span><i class="bi bi-instagram"></i></span>
+          </li>
+
+          <!-- GitHub -->
+          <li class="icon github">
+            <span class="tooltip">Github</span>
+            <span><i class="bi bi-github"></i></span>
+          </li>
+
+          <!-- Slack -->
+          <li class="icon slack">
+            <span class="tooltip">Slack</span>
+            <span><i class="bi bi-slack"></i></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pied de page -->
+    <div id="footer">
+      <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+    </div>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script>
+      // Fonction de simulation de chargement
+      $(document).ready(function () {
+        function simulateLoading() {
+          var progressBar = $("#progress-bar");
+          progressBar.animate({ width: "80%" }, 5000, function () {
+            progressBar.css("width", "0");
+            simulateLoading();
+          });
+        }
+
+        // Appel de la fonction de simulation de chargement
+        simulateLoading();
+      });
+    </script>
   </body>
 </html>

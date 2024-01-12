@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio en construction</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Fonts -->
+
+    <!-- Font Instagram -->
+    <link
+      href="https://db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=Billabong+W00+Regular"
+      rel="stylesheet"
+    />
+    <!-- Font LinkedIn -->
+    <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" />
+    <style>
+      /* Styles globaux */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Styles du Main */
+      .main {
+        flex: 1;
+        position: relative;
+        text-align: center;
+        color: #fff;
+        background: #000000;
+        padding: 100px 20px; /* Ajusté pour occuper 100% de la largeur */
+        height: 100vh; /* Ajusté pour occuper 100% de la hauteur de la fenêtre */
+      }
+
+      /* Styles de la barre de progression */
+      #loading-bar {
+        position: relative;
+        width: 15vw;
+        height: 5px; /* Ajusté pour occuper 5% de la hauteur de la fenêtre */
+        background: #ddd;
+        margin-top: 20px;
+      }
+
+      #progress-bar {
+        position: absolute;
+        height: 100%;
+        background: #ea4c89;
+      }
+
+      /* Styles pour les étiquettes "0%" et "100%" */
+      .loading-labels {
+        display: flex;
+        justify-content: center;
+      }
+
+      .loading-labels span {
+        transform: translateY(5px);
+        padding: 5px;
+      }
+
+      /* Styles des icônes de réseaux sociaux */
+      #social-icons {
+        margin-top: 30px;
+        font-size: 1.5rem;
+        bottom: 10%;
+        left: 50%;
+        right: 50%;
+        position: absolute;
+      }
+
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .icon {
+        position: relative;
+        border: solid 2px white;
+        border-radius: 50%;
+        padding: 20px;
+        margin: 10px;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 15px 15px rgba(255, 255, 255, 22%);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      /* Styles des info-bulles (tooltips) */
+      .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 30px;
+        border: solid 1px aliceblue;
+        color: #ffffff;
+        padding: 5px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(255, 255, 255, 22%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        border-bottom: solid 1px aliceblue;
+        border-right: solid 1px aliceblue;
+        bottom: -4px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .icon:hover .tooltip {
+        top: -75px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .icon:hover span,
+      .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .linkedin:hover,
+      .linkedin:hover .tooltip,
+      .linkedin:hover .tooltip::before {
+        background: #0082ca;
+        color: #ffffff;
+      }
+
+      .twitter-x:hover,
+      .twitter-x:hover .tooltip,
+      .twitter-x:hover .tooltip::before {
+        background: #000000;
+        color: #ffffff;
+      }
+
+      .instagram:hover,
+      .instagram:hover .tooltip,
+      .instagram:hover .tooltip::before {
+        background: #e4405f;
+        color: #ffffff;
+      }
+
+      .github:hover,
+      .github:hover .tooltip,
+      .github:hover .tooltip::before {
+        background: #333333;
+        color: #ffffff;
+      }
+
+      .slack:hover,
+      .slack:hover .tooltip,
+      .slack:hover .tooltip::before {
+        background: #481449;
+        color: #ffffff;
+      }
+
+      .button:hover,
+      .button:hover .tooltip,
+      .button:hover .tooltip::before {
+        background: #096929;
+        color: #ffffff;
+      }
+      .button:hover .tooltip {
+        transform: translate(0, -5px);
+        width: 200px;
+        font-size: 1.5rem;
+      }
+      .button {
+        transition: transform 0.3s ease-in-out;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 90px;
+        height: 90px;
+      }
+      .button .tooltip {
+        text-align: center;
+      }
+      .bi-chat-dots {
+        font-size: 4rem;
+      }
+      /* Styles du pied de page */
+      #footer {
+        text-align: center;
+        padding: 20px;
+        background: #000000;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <section id="hero-banner">
+        <h1>Portfolio en construction</h1>
+        <div class="loading-labels">
+          <span>0%</span>
+          <div id="loading-bar">
+            <div id="progress-bar"></div>
+          </div>
+          <span>100%</span>
+        </div>
+        <div id="social-icons">
+          <ul class="wrapper">
+            <!-- LinkedIn -->
+            <li class="icon linkedin">
+              <span
+                class="tooltip"
+                style="font-family: 'Myriad Pro', sans-serif"
+                >LinkedIn</span
+              >
+              <span><i class="bi bi-linkedin"></i></span>
+            </li>
+            <!-- Twitter X -->
+            <li class="icon twitter-x">
+              <span class="tooltip"><i class="bi bi-twitter-x"></i></span>
+              <span><i class="bi bi-twitter-x"></i></span>
+            </li>
+            <!-- Instagram -->
+            <li class="icon instagram">
+              <span
+                class="tooltip"
+                style="font-family: 'Billabong W00 Regular'"
+              >
+                Instagram
+              </span>
+              <span><i class="bi bi-instagram"></i></span>
+            </li>
+            <!-- Github -->
+            <li class="icon github">
+              <span class="tooltip">Github</span>
+              <span><i class="bi bi-github"></i></span>
+            </li>
+            <!-- Slack -->
+            <li class="icon slack">
+              <span class="tooltip">Slack</span>
+              <span><i class="bi bi-slack"></i></span>
+            </li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div class="icon button">
+          <span class="tooltip">Déplace Moi</span>
+          <span><i class="bi bi-chat-dots"></i></span>
+        </div>
+      </section>
+    </div>
+    <section id="footer">
+      <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+    </section>
+
+    <!-- Script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        function simulateLoading() {
+          var progressBar = $("#progress-bar");
+          var loadingCount = 0;
+
+          function fillProgressBar() {
+            progressBar.animate({ width: "80%" }, 8000, function () {
+              loadingCount++;
+              if (loadingCount < 3) {
+                // Animation terminée, réinitialiser la barre et relancer
+                progressBar.css("width", "0");
+                fillProgressBar();
+              }
+            });
+          }
+
+          fillProgressBar();
+        }
+
+        simulateLoading();
+
+        $(".button").css({ bottom: 100, right: 100 }); // Position initiale
+
+        $(".button").draggable({
+          containment: "body", // Empêche le bouton de sortir de la balise body
+          start: function (event, ui) {
+            $(this).css("transition", "none");
+          },
+          drag: function (event, ui) {
+            var buttonRight = ui.position.left + $(this).width();
+            var windowRight = $(window).width();
+
+            // Vérifiez si le bouton atteint la bordure droite de la fenêtre
+            if (buttonRight > windowRight) {
+              // Ajustez la position pour l'empêcher de dépasser
+              ui.position.left -= buttonRight - windowRight;
+            }
+          },
+          start: function (event, ui) {
+            $(this).css("transition", "none");
+          },
+          stop: function (event, ui) {
+            $(this).css("transition", "transform 0.3s ease-in-out");
+          },
+        });
+
+        // Fonction pour calculer la distance entre deux points
+        function getDistance(x1, y1, x2, y2) {
+          return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        }
+
+        $(document).mousemove(function (e) {
+          var button = $(".button");
+          var mouseX = e.pageX;
+          var mouseY = e.pageY;
+          var buttonX = button.offset().left + button.width() / 2;
+          var buttonY = button.offset().top + button.height() / 2;
+          var distance = getDistance(mouseX, mouseY, buttonX, buttonY);
+
+          if (distance < 150) {
+            // Si la souris est dans la zone aimant
+            button.css({
+              transform: "scale(1.2)",
+              background: "#096929", // Ajout de couleur
+            });
+          } else {
+            // Si la souris n'est pas dans la zone aimant
+            button.css({
+              transform: "scale(1)",
+              background: "", // Retrait de couleur
+            });
+          }
+        });
+
+        // Réinitialiser l'effet d'aimantation lorsque la souris quitte la zone du bouton
+        $(".button").mouseleave(function () {
+          $(".button").css({ transform: "scale(1)" });
+        });
+      });
+    </script>
+  </body>
+</html>

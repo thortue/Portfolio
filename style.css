@@ -1,0 +1,189 @@
+/* Styles globaux */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Styles du Main */
+.main {
+  flex: 1;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: #000000;
+  padding: 100px 20px; /* Ajusté pour occuper 100% de la largeur */
+  height: 100vh; /* Ajusté pour occuper 100% de la hauteur de la fenêtre */
+}
+
+/* Styles de la barre de progression */
+#loading-bar {
+  position: relative;
+  width: 15vw;
+  height: 5px; /* Ajusté pour occuper 5% de la hauteur de la fenêtre */
+  background: #ddd;
+  margin-top: 20px;
+}
+
+#progress-bar {
+  position: absolute;
+  height: 100%;
+  background: #ea4c89;
+}
+
+/* Styles pour les étiquettes "0%" et "100%" */
+.loading-labels {
+  display: flex;
+  justify-content: center;
+}
+
+.loading-labels span {
+  transform: translateY(5px);
+  padding: 5px;
+}
+
+/* Styles des icônes de réseaux sociaux */
+#social-icons {
+  margin-top: 30px;
+  font-size: 1.5rem;
+  bottom: 10%;
+  left: 50%;
+  right: 50%;
+  position: absolute;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.icon {
+  position: relative;
+  border: solid 2px white;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 15px 15px rgba(255, 255, 255, 22%);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Styles des info-bulles (tooltips) */
+.tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 30px;
+  border: solid 1px aliceblue;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(255, 255, 255, 22%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  border-bottom: solid 1px aliceblue;
+  border-right: solid 1px aliceblue;
+  bottom: -4px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.icon:hover .tooltip {
+  top: -75px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.icon:hover span,
+.icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.linkedin:hover,
+.linkedin:hover .tooltip,
+.linkedin:hover .tooltip::before {
+  background: #0082ca;
+  color: #ffffff;
+}
+
+.twitter-x:hover,
+.twitter-x:hover .tooltip,
+.twitter-x:hover .tooltip::before {
+  background: #000000;
+  color: #ffffff;
+}
+
+.instagram:hover,
+.instagram:hover .tooltip,
+.instagram:hover .tooltip::before {
+  background: #e4405f;
+  color: #ffffff;
+}
+
+.github:hover,
+.github:hover .tooltip,
+.github:hover .tooltip::before {
+  background: #333333;
+  color: #ffffff;
+}
+
+.slack:hover,
+.slack:hover .tooltip,
+.slack:hover .tooltip::before {
+  background: #481449;
+  color: #ffffff;
+}
+
+.button:hover,
+.button:hover .tooltip,
+.button:hover .tooltip::before {
+  background: #096929;
+  color: #ffffff;
+}
+.button:hover .tooltip {
+  transform: translate(0, -5px);
+  width: 200px;
+  font-size: 1.5rem;
+}
+.button {
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 90px;
+  height: 90px;
+}
+.button .tooltip {
+  text-align: center;
+}
+.bi-chat-dots {
+  font-size: 4rem;
+}
+/* Styles du pied de page */
+#footer {
+  text-align: center;
+  padding: 20px;
+  background: #000000;
+  color: #fff;
+}
