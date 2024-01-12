@@ -395,15 +395,20 @@
           var distance = getDistance(mouseX, mouseY, buttonX, buttonY);
 
           if (distance < 150) {
+            // Si la souris est dans la zone aimant
             button.css({
               transform: "scale(1.2)",
-              background: "#096929",
+              background: "#096929", // Ajout de couleur
             });
+            // Change la couleur de chaque icône à aliceblue
+            $(".icon span bi-chat-dots").css({ color: "aliceblue" });
           } else {
             button.css({
               transform: "scale(1)",
               background: "",
             });
+            // Revert la couleur de chaque icône à sa couleur d'origine
+            $(".icon span i").css({ color: "" });
           }
         });
 
