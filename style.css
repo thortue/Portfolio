@@ -109,7 +109,7 @@ body {
 }
 
 .icon:hover .tooltip {
-  top: -75px;
+  top: -50px;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -163,8 +163,8 @@ body {
 }
 .button:hover .tooltip {
   transform: translate(0, -5px);
-  width: 200px;
-  font-size: 1.5rem;
+  width: 150px;
+  font-size: 1rem;
 }
 .button {
   transition: transform 0.3s ease-in-out;
@@ -173,6 +173,9 @@ body {
   right: 20px;
   width: 90px;
   height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Ajout de cette ligne pour centrer verticalement */
 }
 .button .tooltip {
   text-align: center;

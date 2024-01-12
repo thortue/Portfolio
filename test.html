@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio en construction</title>
+    <title>Portfolio Spano Kevin</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,15 +17,6 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
-    <!-- Fonts -->
-
-    <!-- Font Instagram -->
-    <link
-      href="https://db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=Billabong+W00+Regular"
-      rel="stylesheet"
-    />
-    <!-- Font LinkedIn -->
-    <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" />
     <style>
       /* Styles globaux */
       body {
@@ -34,6 +26,7 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        overflow: hidden; /* Empêche le défilement */
       }
 
       /* Styles du Main */
@@ -43,15 +36,15 @@
         text-align: center;
         color: #fff;
         background: #000000;
-        padding: 100px 20px; /* Ajusté pour occuper 100% de la largeur */
+        padding: 20px; /* Ajusté pour une meilleure adaptation sur mobile */
         height: 100vh; /* Ajusté pour occuper 100% de la hauteur de la fenêtre */
       }
 
       /* Styles de la barre de progression */
       #loading-bar {
         position: relative;
-        width: 15vw;
-        height: 5px; /* Ajusté pour occuper 5% de la hauteur de la fenêtre */
+        width: 70vw; /* Ajusté pour prendre 70% de la largeur de la fenêtre sur mobile */
+        height: 5px;
         background: #ddd;
         margin-top: 20px;
       }
@@ -77,10 +70,6 @@
       #social-icons {
         margin-top: 30px;
         font-size: 1.5rem;
-        bottom: 10%;
-        left: 50%;
-        right: 50%;
-        position: absolute;
       }
 
       .wrapper {
@@ -112,88 +101,27 @@
       .tooltip {
         position: absolute;
         top: 0;
-        font-size: 30px;
+        font-size: 16px; /* Ajusté pour une meilleure adaptation sur mobile */
         border: solid 1px aliceblue;
         color: #ffffff;
         padding: 5px 8px;
         border-radius: 5px;
         box-shadow: 0 10px 10px rgba(255, 255, 255, 22%);
-        opacity: 0;
+        opacity: 1; /* Modifié pour que les tooltips soient visibles par défaut sur mobile */
         pointer-events: none;
         transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       }
 
       .tooltip::before {
-        position: absolute;
-        content: "";
-        height: 8px;
-        width: 8px;
-        border-bottom: solid 1px aliceblue;
-        border-right: solid 1px aliceblue;
-        bottom: -4px;
-        left: 50%;
-        transform: translate(-50%) rotate(45deg);
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        display: none; /* Caché le pseudo-élément before sur mobile */
       }
 
       .icon:hover .tooltip {
-        top: -75px;
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+        top: -50px;
       }
 
-      .icon:hover span,
-      .icon:hover .tooltip {
-        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-      }
+      /* ... Autres styles pour les réseaux sociaux ... */
 
-      .linkedin:hover,
-      .linkedin:hover .tooltip,
-      .linkedin:hover .tooltip::before {
-        background: #0082ca;
-        color: #ffffff;
-      }
-
-      .twitter-x:hover,
-      .twitter-x:hover .tooltip,
-      .twitter-x:hover .tooltip::before {
-        background: #000000;
-        color: #ffffff;
-      }
-
-      .instagram:hover,
-      .instagram:hover .tooltip,
-      .instagram:hover .tooltip::before {
-        background: #e4405f;
-        color: #ffffff;
-      }
-
-      .github:hover,
-      .github:hover .tooltip,
-      .github:hover .tooltip::before {
-        background: #333333;
-        color: #ffffff;
-      }
-
-      .slack:hover,
-      .slack:hover .tooltip,
-      .slack:hover .tooltip::before {
-        background: #481449;
-        color: #ffffff;
-      }
-
-      .button:hover,
-      .button:hover .tooltip,
-      .button:hover .tooltip::before {
-        background: #096929;
-        color: #ffffff;
-      }
-      .button:hover .tooltip {
-        transform: translate(0, -5px);
-        width: 200px;
-        font-size: 1.5rem;
-      }
       .button {
         transition: transform 0.3s ease-in-out;
         position: fixed;
@@ -201,6 +129,9 @@
         right: 20px;
         width: 90px;
         height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .button .tooltip {
         text-align: center;
@@ -228,64 +159,35 @@
           </div>
           <span>100%</span>
         </div>
-        <div id="social-icons">
-          <ul class="wrapper">
-            <!-- LinkedIn -->
-            <li class="icon linkedin">
+        <div id="social-icons" class="container">
+          <ul class="row">
+            <!-- Réorganiser les icônes pour une meilleure disposition sur mobile -->
+            <li class="icon linkedin col-6 col-md-2">
               <span
                 class="tooltip"
-                style="font-family: 'Myriad Pro', sans-serif"
+                style="font-family: 'Myriad Pro', sans-serif; color: #0082ca"
                 >LinkedIn</span
               >
-              <span><i class="bi bi-linkedin"></i></span>
+              <span><i class="bi bi-linkedin" style="color: #0082ca"></i></span>
             </li>
-            <!-- Twitter X -->
-            <li class="icon twitter-x">
-              <span class="tooltip"><i class="bi bi-twitter-x"></i></span>
-              <span><i class="bi bi-twitter-x"></i></span>
-            </li>
-            <!-- Instagram -->
-            <li class="icon instagram">
-              <span
-                class="tooltip"
-                style="font-family: 'Billabong W00 Regular'"
-              >
-                Instagram
-              </span>
-              <span><i class="bi bi-instagram"></i></span>
-            </li>
-            <!-- Github -->
-            <li class="icon github">
-              <span class="tooltip">Github</span>
-              <span><i class="bi bi-github"></i></span>
-            </li>
-            <!-- Slack -->
-            <li class="icon slack">
-              <span class="tooltip">Slack</span>
-              <span><i class="bi bi-slack"></i></span>
-            </li>
+            <!-- ... Autres icônes ... -->
           </ul>
         </div>
         <!-- Contact -->
         <div class="icon button">
           <span class="tooltip">Déplace Moi</span>
-          <span><i class="bi bi-chat-dots"></i></span>
+          <span style="transform: translate(0px, -5px)"
+            ><i class="bi bi-chat-dots" style="color: #096929"></i
+          ></span>
         </div>
       </section>
     </div>
     <section id="footer">
       <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
     </section>
-
-    <!-- Script -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <!-- <script src="script.js"></script> -->
     <script>
       $(document).ready(function () {
         function simulateLoading() {
@@ -296,7 +198,6 @@
             progressBar.animate({ width: "80%" }, 8000, function () {
               loadingCount++;
               if (loadingCount < 3) {
-                // Animation terminée, réinitialiser la barre et relancer
                 progressBar.css("width", "0");
                 fillProgressBar();
               }
@@ -308,10 +209,10 @@
 
         simulateLoading();
 
-        $(".button").css({ bottom: 100, right: 100 }); // Position initiale
+        $(".button").css({ bottom: 20, right: 20 }); // Position initiale
 
         $(".button").draggable({
-          containment: "body", // Empêche le bouton de sortir de la balise body
+          containment: "body",
           start: function (event, ui) {
             $(this).css("transition", "none");
           },
@@ -319,9 +220,7 @@
             var buttonRight = ui.position.left + $(this).width();
             var windowRight = $(window).width();
 
-            // Vérifiez si le bouton atteint la bordure droite de la fenêtre
             if (buttonRight > windowRight) {
-              // Ajustez la position pour l'empêcher de dépasser
               ui.position.left -= buttonRight - windowRight;
             }
           },
@@ -333,7 +232,6 @@
           },
         });
 
-        // Fonction pour calculer la distance entre deux points
         function getDistance(x1, y1, x2, y2) {
           return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
         }
@@ -347,21 +245,18 @@
           var distance = getDistance(mouseX, mouseY, buttonX, buttonY);
 
           if (distance < 150) {
-            // Si la souris est dans la zone aimant
             button.css({
               transform: "scale(1.2)",
-              background: "#096929", // Ajout de couleur
+              background: "#096929",
             });
           } else {
-            // Si la souris n'est pas dans la zone aimant
             button.css({
               transform: "scale(1)",
-              background: "", // Retrait de couleur
+              background: "",
             });
           }
         });
 
-        // Réinitialiser l'effet d'aimantation lorsque la souris quitte la zone du bouton
         $(".button").mouseleave(function () {
           $(".button").css({ transform: "scale(1)" });
         });
