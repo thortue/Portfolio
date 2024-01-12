@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(window).ready(function () {
   function simulateLoading() {
     var progressBar = $("#progress-bar");
     var loadingCount = 0;
