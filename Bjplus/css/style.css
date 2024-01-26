@@ -1,0 +1,87 @@
+/* Reset CSS */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd,
+dt {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+/* Header Styles */
+header.hero-banner {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  background-image: url("../img/site/Banner-bg.png"); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Navigation Styles */
+nav.navbar {
+  background-color: #f0f8ff23;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+button.burger {
+  display: block;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+div.nav-navbar {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: #f0f8ff;
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav-navbar.show {
+  transform: translateY(0);
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  background-color: #ddd;
+}
